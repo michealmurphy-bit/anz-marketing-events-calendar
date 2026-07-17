@@ -590,52 +590,128 @@
 // Sources: #marketing-anz-whatson · #anz-exec-programs · #event-anz-all-worldtours · #event-anz-dreamforce
 // Loaded: 17 Jul 2026
 const AE_ACCOUNTS = {
-  "Rhys Coles":        ["Wesfarmers", "Coles Group", "Harvey Norman", "JB Hi-Fi", "Myer"],
-  "Thomas Coolican":   ["Commonwealth Bank", "NAB", "Macquarie Group", "AMP Limited", "Bendigo Bank"],
-  "Michael Fortescue": ["Telstra", "Optus", "TPG Telecom", "Vocus Communications", "Foxtel"],
-  "Bree Gallagher":    ["EBOS Group", "Sigma Healthcare", "Ramsay Health Care", "Healthscope", "Bupa Australia"],
-  "Julia Gilmour":     ["BHP", "Rio Tinto", "Fortescue Metals Group", "South32", "Newcrest Mining"],
-  "William Jones":     ["Woolworths Group", "Endeavour Group", "Metcash", "IGA Australia", "Caltex Australia"],
-  "Angie Kalas":       ["IAG Insurance", "QBE Insurance", "Suncorp Group", "Medibank", "nib Health"]
+  "Angie Kalas": [
+    "Crown Resorts", "Crown Resorts Limited", "Crown Melbourne Limited", "Crown Perth", "BURSWOOD RESORT (MANAGEMENT) LIMITED", "Crown Events", "Crown Loyalty Account",
+    "Nine Entertainment Co. Pty Ltd.", "Nine Entertainment Co. Holdings Limited", "Nine Entertainment", "Nine Entertainment (Fairfax Media)", "Nine Network Australia Pty Ltd", "Nine Publishing", "Nine Digital Pty Limited",
+    "MYOB Australia Pty Ltd (Parent Account)", "MYOB Australia Pty Ltd", "MYOB Australia PTY LTD ( Enterprise Solutions Division )", "MYOB (Technology Services)",
+    "Domain Holdings Australia Pty Ltd", "Domain Holdings Autralia Limited", "Domain",
+    "Fairfax Digital Limited", "Fairfax Financial Review Group FRG", "Fairfax Radio", "Fairfax Events", "Fairfax Media Publications Pty Limited",
+    "Stan Entertainment Pty Ltd", "Betfair Pty Ltd", "BETFAIR PTY LIMITED",
+    "Macquarie Media Limited Pty Ltd.", "RADIO 2UE SYDNEY PTY LTD", "Radio 3AW Melbourne Pty Ltd",
+    "Allure Media Pty Ltd", "Car Advice", "Pedestrian Group", "Adzuna Australia", "Insight Data Solutions", "Flare", "DTN APAC Pty Ltd"
+  ],
+  "Bree Gallagher": [
+    "EBOS Group", "EBOS Group Ltd - Symbion", "EBOS Group Ltd - Masterpet", "EBOS GROUP PTY LTD", "EBOS Health & Science Pty Ltd", "EBOS Medical Technology", "EBOS Healthcare Enterprise", "EBOS Animal Care Enterprise",
+    "Sigma Healthcare", "Sigma Company Limited", "SIGMA (W.A.) PTY LTD",
+    "Chemist Warehouse",
+    "Calvary Health Care", "Calvary ACT", "Calvary Community Care", "Calvary Health Care Adelaide Limited", "CALVARY HEALTH CARE BETHLEHEM LIMITED", "Little Company of Mary Health Care Limited",
+    "LifeHealthcare Pty Ltd", "National Surgical Corporation", "Sentry Medical", "LMT Surgical", "LMT",
+    "TerryWhite Chemmart", "Terry White Management Pty Ltd", "Discount DrugStores Pty Ltd", "Discount Drugstores",
+    "Vitapet Australia", "MASTERPET AUSTRALIA PTY LIMITED",
+    "Symbion Contract Logistics", "Healthcare Logistics Australia", "Lyppard Australia",
+    "Endeavour Consumer Health", "Ventura Health", "Zest", "Sigma - Guardian Pharmacies Australia Pty Ltd"
+  ],
+  "Julia Gilmour": [
+    "Aristocrat Technologies Australia Pty Ltd", "Aristocrat", "SFDC_Aristocrat_11252025",
+    "The Star Entertainment Group Limited", "Star City Holdings Limited", "Star Entertainment", "Destination Brisbane Consortium Integrated Resort Operations",
+    "Tabcorp Holdings Limited", "TABCORP GAMING SOLUTIONS PTY LTD", "TABCORP GAMING SOLUTIONS (QLD) PTY LTD", "Tabcorp Assets Pty Ltd",
+    "Tab Limited", "TAB Sportsbet", "Luxbet Pty Ltd",
+    "Carsales.com Ltd", "Carsales AU", "Carsales Aus", "CAR Group Ltd.",
+    "Gold Coast Convention Centre",
+    "Dealer Drive", "i-Motor Pty Ltd", "Autoinspect", "Automotive Exchange Pty Ltd trading as Audience360", "Automotive Vehicle Inspections (AVI) PTY LTD",
+    "Publift Pty Ltd", "CS Motion"
+  ],
+  "Michael Fortescue": [
+    "REA Group", "REA Group Ltd - Do Not Use", "REALESTATE.COM.AU PTY LTD (CH)", "Realestate.com.au Pty Ltd", "realestate.com.au Pty Limited", "realestate.com.au Pty Ltd", "Proptrack Ltd",
+    "News Corp Australia Pty Ltd", "News Corp", "Nationwide News Pty Limited", "News Classifieds Network (NCN) Pty Limited",
+    "Seven West Media Ltd.", "Seven Network (Operations) Limited", "Channel Seven Brisbane Pty Limited", "CHANNEL SEVEN SYDNEY PTY LIMITED",
+    "Southern Cross Austereo Pty Ltd", "Southern Cross Austereo", "Southern Cross Media Group Limited",
+    "Foxtel Management Pty Ltd", "Foxtel Management Pty Limited", "Foxtel Australia", "Fox Sports Australia Pty Limited (RF Org)", "Foxtel Media PTY LTD",
+    "Australian Broadcasting Corporation",
+    "HT&E Ltd.", "Ht&E Ltd.", "Ht&E Online",
+    "West Australian Newspapers Ltd", "West Australian Newspapers Limited",
+    "Pacific Magazines Pty Ltd", "Pacific Magazines Pty Limited [Master]",
+    "Australia Radio Network Pty Limited", "Streamotion Pty Ltd",
+    "Sensis Pty Ltd", "Thryv Australia Pty Ltd", "Sky News Channel",
+    "HarperCollins Publishers Australia Pty Ltd.", "Medium Rare Content Agency", "CampaignAgent", "Realtair Pty Ltd"
+  ],
+  "Rhys Coles": [
+    "TPG Telecom Limited", "TPG Telecom", "TPG Telecom Limited NZC",
+    "Vocus Pty Ltd", "Vocus Pty Ltd.", "Vocus", "Vocus Communications Ltd",
+    "iiNet Limited", "iiNet",
+    "Vodafone Pty Ltd",
+    "M2 GROUP PTY LTD",
+    "Primus Telecommunications Pty Ltd",
+    "Dodo Services Pty Ltd", "Dodo Australia Holdings Pty Ltd",
+    "PIPE NETWORKS LIMITED", "Pipe Networks Pty Ltd",
+    "AAPT Limited 2", "Adam Internet", "Nextgen",
+    "Deactivated ex Vocus brand: IP Systems (Subsidiary)", "Deactivated ex Vocus brand: Amcom Telecommunications"
+  ],
+  "Thomas Coolican": [
+    "Cochlear Limited", "Cochlear", "Cochlear Headquarters",
+    "ResMed Asia Pacific Limited", "Resmed Inc", "ResMed Asia PTE LTD",
+    "Sonic Healthcare Limited", "Sonic Healthcare Services Pty Ltd", "Sonic HealthPlus",
+    "AstraZeneca Pty Ltd", "Astrazeneca Pty Ltd",
+    "GenesisCare Finance Pty Ltd", "QUEENSLAND RESPIRATORY LABORATORY PTY. LTD. (GenesisCare)",
+    "Healius PARENT", "Healius Pathology Pty Ltd", "Healius - Imaging", "Healius - Health & Co",
+    "I-MED RADIOLOGY NETWORK LIMITED", "Sullivan Nicolaides Pathology", "QML PATHOLOGY",
+    "Douglass Hanly Moir Pathology Pty Limited", "Laverty Pathology",
+    "IPN Medical Centres",
+    "Harrison.ai", "Annalise-AI Pty Ltd", "Franklin-ai pty limited",
+    "ForHealth Group", "Vita Group Ltd", "Lumus Imaging", "LifeHealthcare Pty Ltd"
+  ],
+  "William Jones": [
+    "Australian Football League (HQ)", "Australian Football League", "AFL",
+    "Melbourne Football Club Limited", "Collingwood Football Club", "Essendon Football Club", "ESSENDON FOOTBALL CLUB",
+    "CARLTON FOOTBALL CLUB LIMITED", "RICHMOND FOOTBALL CLUB LIMITED", "FREMANTLE FOOTBALL CLUB LIMITED",
+    "Sydney Swans", "Brisbane Lions Australian Football Club", "Port Adelaide Football Club Limited",
+    "North Melbourne Football Club Limited", "North Melbourne Football Club", "St Kilda Football Club Limited",
+    "Geelong Football Club", "Western Bulldogs Football Club", "GCFC Limited t/a Gold Coast Suns",
+    "Greater Western Sydney Giants",
+    "NBN Co Limited", "NBN Co Limited.",
+    "Accenture Australia Pty Limited", "Accenture Australia Pty Ltd", "Accenture", "Avanade", "Avanade Australia Pty Ltd",
+    "CyberCX Pty Ltd", "SHEARWATER SOLUTIONS PTY LTD", "Shearwater",
+    "Melbourne Stadiums Limited", "Sports Entertainment Network ( Inc. SEN Radio + Croc Media)"
+  ]
 };
 
 // Mock registration data — in production populated from registration report links
 const REGISTRATIONS = {
   3: [
-    { name: "Sarah Mitchell",  account: "EBOS Group",       title: "Head of Digital",           date: "22 Jun" },
-    { name: "Robert Kumar",    account: "Commonwealth Bank", title: "EVP Technology",            date: "18 Jun" },
-    { name: "David Thompson",  account: "Telstra",           title: "Senior Architect",          date: "20 Jun" },
-    { name: "Lisa Kovacs",     account: "BHP",               title: "Digital Lead",              date: "19 Jun" },
-    { name: "Rachel Torres",   account: "Wesfarmers",        title: "CRM Lead",                  date: "21 Jun" },
-    { name: "Andrew Park",     account: "QBE Insurance",     title: "Head of Innovation",        date: "22 Jun" },
-    { name: "Peter Chen",      account: "NAB",               title: "Head of Service Delivery",  date: "17 Jun" },
-    { name: "Mei-Lin Zhang",   account: "Macquarie Group",   title: "CX Director",               date: "20 Jun" },
-    { name: "Chris Bennett",   account: "EBOS Group",        title: "VP Operations",             date: "24 Jun" },
-    { name: "Jessica Park",    account: "IAG Insurance",     title: "Service Excellence Lead",   date: "21 Jun" }
+    { name: "Sarah Mitchell",   account: "EBOS Group",                       title: "Head of Digital",              date: "22 Jun" },
+    { name: "Chris Bennett",    account: "EBOS Group",                       title: "VP Operations",                date: "24 Jun" },
+    { name: "Jessica Park",     account: "Crown Resorts",                    title: "Director of CX",               date: "21 Jun" },
+    { name: "Andrew Park",      account: "Nine Entertainment Co. Pty Ltd.",  title: "Head of Customer Success",     date: "22 Jun" },
+    { name: "Peter Chen",       account: "Cochlear Limited",                 title: "Head of Service Delivery",     date: "17 Jun" },
+    { name: "Mei-Lin Zhang",    account: "Cochlear Headquarters",            title: "CX Director",                  date: "20 Jun" },
+    { name: "David Thompson",   account: "REA Group",                        title: "Senior Service Architect",     date: "20 Jun" },
+    { name: "Rachel Torres",    account: "TPG Telecom Limited",              title: "CX Lead",                      date: "21 Jun" },
+    { name: "Marcus Lee",       account: "Aristocrat Technologies Australia Pty Ltd", title: "Head of Digital",    date: "19 Jun" },
+    { name: "Lisa Kovacs",      account: "NBN Co Limited",                   title: "Service Operations Lead",      date: "18 Jun" }
   ],
   4: [
-    { name: "Emma Nguyen",     account: "Commonwealth Bank", title: "Digital Manager",           date: "1 Jul"  },
-    { name: "Priya Sharma",    account: "NAB",               title: "Marketing Director",        date: "3 Jul"  },
-    { name: "Sarah Mitchell",  account: "EBOS Group",        title: "Head of Digital",           date: "2 Jul"  },
-    { name: "Tom Caldwell",    account: "Woolworths Group",  title: "CRM Manager",               date: "4 Jul"  },
-    { name: "Marcus Lee",      account: "Suncorp Group",     title: "Head of Digital",           date: "1 Jul"  },
-    { name: "Jennifer Wong",   account: "Telstra",           title: "Marketing Director",        date: "5 Jul"  }
+    { name: "Emma Nguyen",      account: "MYOB Australia Pty Ltd (Parent Account)", title: "Digital Marketing Manager", date: "1 Jul" },
+    { name: "Priya Sharma",     account: "Domain Holdings Australia Pty Ltd",       title: "Marketing Director",        date: "3 Jul" },
+    { name: "Sarah Mitchell",   account: "EBOS Group",                              title: "Head of Digital",           date: "2 Jul" },
+    { name: "Tom Caldwell",     account: "Nine Entertainment Co. Pty Ltd.",          title: "CRM Manager",               date: "4 Jul" },
+    { name: "Marcus Lee",       account: "Tabcorp Holdings Limited",                title: "Head of Marketing",         date: "1 Jul" },
+    { name: "Jennifer Wong",    account: "Southern Cross Austereo Pty Ltd",         title: "Marketing Director",        date: "5 Jul" }
   ],
   5: [
-    { name: "Peter Chen",      account: "NAB",               title: "Data Architect",            date: "5 Jul"  },
-    { name: "Lisa Kovacs",     account: "BHP",               title: "Data Platform Lead",        date: "7 Jul"  },
-    { name: "Sarah Mitchell",  account: "EBOS Group",        title: "Head of Digital",           date: "8 Jul"  },
-    { name: "Mark Anderson",   account: "Woolworths Group",  title: "Head of Data",              date: "6 Jul"  },
-    { name: "Jessica Park",    account: "IAG Insurance",     title: "Data Governance Lead",      date: "7 Jul"  },
-    { name: "Mei-Lin Zhang",   account: "Macquarie Group",   title: "Head of Analytics",        date: "9 Jul"  }
+    { name: "Peter Chen",       account: "Cochlear Limited",                 title: "Data Architect",               date: "5 Jul"  },
+    { name: "Lisa Kovacs",      account: "Sonic Healthcare Limited",         title: "Data Platform Lead",           date: "7 Jul"  },
+    { name: "Sarah Mitchell",   account: "EBOS Group",                       title: "Head of Digital",              date: "8 Jul"  },
+    { name: "Mark Anderson",    account: "REA Group",                        title: "Head of Data",                 date: "6 Jul"  },
+    { name: "Jessica Park",     account: "Vocus Pty Ltd",                    title: "Data Governance Lead",         date: "7 Jul"  },
+    { name: "Mei-Lin Zhang",    account: "Carsales.com Ltd",                 title: "Head of Analytics",            date: "9 Jul"  }
   ],
   14: [
-    { name: "Robert Kumar",    account: "Commonwealth Bank", title: "EVP Technology",            date: "10 Jul" },
-    { name: "Fiona Walsh",     account: "NAB",               title: "Chief Digital Officer",     date: "12 Jul" },
-    { name: "Chris Bennett",   account: "EBOS Group",        title: "VP Finance",                date: "11 Jul" },
-    { name: "Mark Stevens",    account: "BHP",               title: "Chief Technology Officer",  date: "9 Jul"  },
-    { name: "Amanda Foster",   account: "Wesfarmers",        title: "Group CIO",                 date: "14 Jul" },
-    { name: "Patrick O'Brien", account: "IAG Insurance",     title: "Innovation Manager",        date: "13 Jul" }
+    { name: "Robert Kumar",     account: "Cochlear Limited",                 title: "Chief Technology Officer",     date: "10 Jul" },
+    { name: "Fiona Walsh",      account: "ResMed Asia Pacific Limited",      title: "Chief Digital Officer",        date: "12 Jul" },
+    { name: "Chris Bennett",    account: "EBOS Group",                       title: "VP Finance",                   date: "11 Jul" },
+    { name: "Mark Stevens",     account: "Sonic Healthcare Limited",         title: "Head of Technology",           date: "9 Jul"  },
+    { name: "Amanda Foster",    account: "Nine Entertainment Co. Pty Ltd.",  title: "Group CIO",                    date: "14 Jul" },
+    { name: "Patrick O'Brien",  account: "NBN Co Limited",                   title: "Innovation Manager",           date: "13 Jul" }
   ]
 };
 
