@@ -959,7 +959,7 @@ const EVENTS = [
     reg: "https://invite.salesforce.com/takeyourservicestrategyfromgoo-06b3",
     report: "https://org62.lightning.force.com/lightning/r/Report/00Oed00000A7uMHEAZ/view?queryScope=userFolder",
     clouds: ["service", "agentforce"],
-    firstSeen: "2026-07-18",
+    firstSeen: "2026-07-10",
     isNew: true,
     entOnly: true
   },
@@ -979,7 +979,7 @@ const EVENTS = [
     reg: "https://invite.salesforce.com/d360wkshopbris",
     report: "https://prod-uswest-c.online.tableau.com/#/site/salesforce/views/EventRegistration/Overview/95518fdb-4f70-4e24-9986-807b42e2b61a/FY27Q2D360WkshopBris?:iid=1",
     clouds: ["data", "agentforce", "analytics"],
-    firstSeen: "2026-07-18",
+    firstSeen: "2026-07-16",
     isNew: true,
     entOnly: true
   },
@@ -999,7 +999,7 @@ const EVENTS = [
     reg: "https://invite.salesforce.com/securitysummit2026",
     report: "https://org62.lightning.force.com/lightning/r/Report/00Oed00000A4tRZEAZ/view?queryScope=userFolders",
     clouds: ["security", "agentforce", "platform"],
-    firstSeen: "2026-07-18",
+    firstSeen: "2026-07-09",
     isNew: true,
     entOnly: true
   },
@@ -1019,7 +1019,7 @@ const EVENTS = [
     reg: null,
     report: null,
     clouds: ["agentforce", "sales"],
-    firstSeen: "2026-07-18",
+    firstSeen: "2026-06-24",
     isNew: true,
     entOnly: true
   },
@@ -1039,7 +1039,7 @@ const EVENTS = [
     reg: "https://invite.salesforce.com/goodtogreatsalesmelb",
     report: "https://org62.lightning.force.com/lightning/r/Dashboard/01Zed000000x9qTEAQ/view?queryScope=userFolders",
     clouds: ["sales", "agentforce"],
-    firstSeen: "2026-07-18",
+    firstSeen: "2026-07-15",
     isNew: true,
     entOnly: true
   },
@@ -1059,7 +1059,26 @@ const EVENTS = [
     reg: null,
     report: null,
     clouds: ["service", "agentforce"],
-    firstSeen: "2026-07-18",
+    firstSeen: "2026-06-24",
+    isNew: true,
+    entOnly: true
+  },
+  {
+    id: 21,
+    title: "Keynote: AI in Action for Financial Services",
+    short: "AI in Action FS Webinar",
+    date: "2026-07-30",
+    time: "Online",
+    location: "Online",
+    tag: "Webinar",
+    personas: "Financial Services leaders: banking, insurance, wealth management",
+    segment: "ENT, Financial Services",
+    cloud: "agentforce", label: "Agentforce",
+    desc: "The Financial Services Summit 2026 brought together hundreds of leaders from across Australia and New Zealand to explore what\u2019s next: autonomous agents working alongside humans to drive productivity, scale trust, and transform financial services in real time. This keynote rebroadcast reveals how Agentforce is reshaping banking, insurance, and wealth management through AI that works within trusted, compliant workflows.",
+    reg: "https://www.salesforce.com/au/events/webinars/ai-in-action-for-financial-services/",
+    report: "https://prod-uswest-c.online.tableau.com/#/site/salesforce/views/EventRegistration/Registered/851e02ee-59e6-41c5-80f5-4dbf8cd348de/FY27Q2KeynoteAIinActionforFinancialServices",
+    clouds: ["agentforce", "analytics"],
+    firstSeen: "2026-07-15",
     isNew: true,
     entOnly: true
   }
@@ -1210,7 +1229,7 @@ function renderSpotlight() {
   const cutoff  = new Date(today.getTime() - 7*24*60*60*1000);
 
   const evs = EVENTS
-    .filter(e => e.firstSeen && new Date(e.firstSeen + 'T00:00:00') >= cutoff)
+    .filter(e => e.firstSeen && new Date(e.firstSeen + 'T00:00:00') >= cutoff && new Date(e.date + 'T00:00:00') >= today)
     .sort((a, b) => b.firstSeen.localeCompare(a.firstSeen));
 
   if (!evs.length) { if (section) section.style.display = 'none'; return; }
