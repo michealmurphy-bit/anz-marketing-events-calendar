@@ -693,6 +693,16 @@ const AE_ACCOUNTS = {
   ]
 };
 
+const AE_IDS = {
+  "William Jones":     "0050M00000ET0emQAD",
+  "Rhys Coles":        "0050M00000EIgzrQAD",
+  "Thomas Coolican":   "0053y00000GBRd4AAH",
+  "Michael Fortescue": "0050M00000Dtx9TQAR",
+  "Bree Gallagher":    "0053y00000FyelFAAR",
+  "Julia Gilmour":     "0050M00000DtwzxQAB",
+  "Angie Kalas":       "0050M00000DJQ9gQAH"
+};
+
 // Mock registration data — in production populated from registration report links
 
 
@@ -1278,9 +1288,9 @@ function askClaude() {
   const d = new Date(e.date + 'T00:00:00');
   const dStr = d.toLocaleDateString('en-AU', { day:'numeric', month:'long', year:'numeric' });
   let msg;
-  if (activeAE && AE_ACCOUNTS[activeAE]) {
-    const accts = AE_ACCOUNTS[activeAE].slice(0, 20).join(', ');
-    msg = `Hey Claude, I need your help. Can you check the registration report for "${e.title}" (${dStr}) and tell me which of ${activeAE}'s accounts have registered? Here is the report link: ${e.report}\n\n${activeAE}'s accounts include: ${accts}`;
+  if (activeAE && AE_IDS[activeAE]) {
+    const aeId = AE_IDS[activeAE];
+    msg = `Hey Claude, can you check the registration report for "${e.title}" (${dStr}) and tell me which of ${activeAE}'s accounts have registered?\n\nRegistration report: ${e.report}\n\n${activeAE}'s Salesforce User ID is ${aeId} — please look up all accounts owned by this user in org62 and cross-reference with the registrant list.`;
   } else {
     msg = `Hey Claude, can you check who has registered for "${e.title}" on ${dStr}? Here is the registration report: ${e.report}`;
   }
