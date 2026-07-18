@@ -330,52 +330,22 @@
     .prod-pill[data-cloud="smb"].active        { background: #E86825; }
 
     /* ── SPOTLIGHT ───────────────────────────────────────────────────────── */
-    .spotlight {
-      padding: 1.25rem 1.75rem 2.25rem;
-      border-top: 1px solid var(--border);
+    .spotlight { padding: 1.25rem 1.75rem 2rem; border-top: 1px solid var(--border); }
+    .spotlight-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; }
+    .spotlight-lbl { font-size:1rem; font-weight:700; color:var(--navy); display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; }
+    .spot-grid { display:flex; flex-direction:column; gap:.35rem; }
+    .spot-row {
+      display:grid; grid-template-columns:auto 1fr auto auto;
+      align-items:center; gap:.75rem;
+      padding:.65rem .9rem; background:var(--white);
+      border:1px solid var(--border); border-radius:var(--r);
+      cursor:pointer; transition:box-shadow .15s, border-color .15s;
     }
-    .spotlight-top {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: .9rem;
-    }
-    .spotlight-hdr {
-      font-size: .72rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: .09em; color: var(--sub);
-    }
-    .spotlight-tip {
-      display: flex; align-items: center; gap: .45rem;
-      margin-top: 1rem; padding: .55rem .85rem;
-      background: #F3F2F2; border: 1px solid var(--border); border-radius: 6px;
-      font-size: .73rem; color: var(--sub); line-height: 1.45;
-    }
-    .spot-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: .9rem;
-    }
-    .spot-card {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: var(--r); padding: 1rem 1.1rem;
-      border-top: 3px solid #ccc;
-      transition: box-shadow .18s, transform .18s;
-      cursor: pointer;
-    }
-    .spot-card:hover { box-shadow: var(--shadow-pop); transform: translateY(-2px); }
-    .spot-top {
-      display: flex; align-items: flex-start;
-      justify-content: space-between; gap: .5rem; margin-bottom: .5rem;
-    }
-    .spot-badge {
-      font-size: .61rem; font-weight: 700; padding: 2px 9px;
-      border-radius: 100px; white-space: nowrap; flex-shrink: 0;
-    }
-    .spot-date { font-size: .68rem; color: var(--sub); text-align: right; white-space: nowrap; }
-    .spot-title { font-size: .87rem; font-weight: 700; color: var(--text); margin-bottom: .55rem; line-height: 1.3; }
-    .spot-list { list-style: none; padding: 0; margin: 0; font-size: .75rem; color: #555; line-height: 1.65; }
-    .spot-list li { padding-left: 1.1em; position: relative; }
-    .spot-list li::before { content: '→'; position: absolute; left: 0; color: var(--blue); font-weight: 700; }
-
-
+    .spot-row:hover { box-shadow:var(--shadow); border-color:#c0bfbf; }
+    .spot-pill { font-size:.65rem; font-weight:700; padding:2px 8px; border-radius:3px; white-space:nowrap; text-transform:uppercase; letter-spacing:.4px; }
+    .spot-title { font-size:.85rem; font-weight:600; color:var(--navy); }
+    .spot-meta { font-size:.75rem; color:var(--sub); white-space:nowrap; }
+    .spot-added { font-size:.7rem; color:#0A7A3C; font-weight:600; white-space:nowrap; }
     /* ── AE SELECTOR ─────────────────────────────────────────────────────────── */
     .ae-selector-wrap { display: flex; align-items: center; gap: .5rem; }
     .ae-lbl { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: rgba(255,255,255,.45); white-space: nowrap; }
@@ -556,7 +526,7 @@
     <div class="cal-grid" id="cal-grid"></div>
   </div>
 
-  <div class="spotlight">
+  <div id="spotlight-section" class="spotlight">
     <div class="spotlight-top">
       <span class="spotlight-hdr" id="spotlight-label">Recently Added &nbsp;<span class="new-badge">New this week</span></span>
     </div>
@@ -1232,7 +1202,7 @@ function renderSpotCard(e) {
   </div>`;
 }
 
-function renderSpotlight(filter) {
+function renderSpotlight() {
   const grid = document.getElementById('spot-grid');
   const label = document.getElementById('spotlight-label');
   const tip = document.getElementById('spotlight-tip');
@@ -1262,7 +1232,7 @@ function setFilter(cloud) {
     p.classList.toggle('active', isActive);
   });
   render();
-  renderSpotlight(cloud);
+  renderSpotlight();
 }
 
 function toggleEnt() {
@@ -1270,7 +1240,7 @@ function toggleEnt() {
   const btn = document.getElementById('entBtn');
   btn.classList.toggle('active', entOnly);
   render();
-  renderSpotlight(activeFilter);
+  renderSpotlight();
 }
 
 function onAEChange() {
@@ -1399,7 +1369,7 @@ function loadCalendar() {
     const t = new Date().toLocaleTimeString('en-AU', { hour:'2-digit', minute:'2-digit' });
     document.getElementById('last-sync').textContent = `Synced at ${t} · 22 Jun 2026`;
     render();
-    renderSpotlight(null);
+    renderSpotlight();
   }, 1500);
 }
 
@@ -1407,7 +1377,7 @@ function doRefresh() {
   const t = new Date().toLocaleTimeString('en-AU', { hour:'2-digit', minute:'2-digit' });
   document.getElementById('last-sync').textContent = `Synced at ${t}`;
   render();
-  renderSpotlight(activeFilter);
+  renderSpotlight();
 }
 </script>
 </body>
