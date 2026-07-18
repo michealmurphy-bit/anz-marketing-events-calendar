@@ -428,6 +428,23 @@
     .reg-empty { text-align: center; padding: 1rem 0; font-size: .8rem; color: var(--sub); font-style: italic; }
     .reg-report-link { display: block; text-align: center; margin-top: .75rem; font-size: .75rem; color: var(--blue); font-weight: 600; text-decoration: none; }
     .reg-report-link:hover { text-decoration: underline; }
+    .ask-claude-btn {
+      display: flex; align-items: center; justify-content: center; gap: .45rem;
+      margin-top: .5rem; padding: .55rem 1rem;
+      background: #4A154B; color: #fff;
+      border: none; border-radius: 6px; cursor: pointer;
+      font-size: .78rem; font-weight: 600; width: 100%;
+      text-decoration: none; transition: background .15s;
+    }
+    .ask-claude-btn:hover { background: #611f64; }
+    .ask-claude-btn svg { flex-shrink: 0; }
+    .ask-claude-toast {
+      position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      background: #2E844A; color: #fff; padding: .55rem 1.25rem;
+      border-radius: 8px; font-size: .82rem; font-weight: 600;
+      opacity: 0; transition: opacity .3s; pointer-events: none; z-index: 9999;
+    }
+    .ask-claude-toast.show { opacity: 1; }
 
     /* ── RECENTLY ADDED SECTION ──────────────────────────────────────────────── */
     .new-badge {
@@ -580,6 +597,11 @@
       </div>
       <div id="reg-content"></div>
       <a class="reg-report-link" id="reg-report-link" href="#" target="_blank" style="display:none">View full registration report &#x2197;</a>
+      <button class="ask-claude-btn" id="ask-claude-btn" style="display:none" onclick="askClaude()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v11A1.5 1.5 0 003.5 16H8l4 4 4-4h4.5A1.5 1.5 0 0022 14.5v-11A1.5 1.5 0 0020.5 2z" fill="currentColor" opacity=".9"/></svg>
+        Ask Claude in Slack
+      </button>
+      <div class="ask-claude-toast" id="ask-claude-toast">Message copied — opening Slack...</div>
     </div>
     </div>
   </div>
@@ -1300,6 +1322,27 @@ function onAEChange() {
   if (openId) renderRegPanel(parseInt(openId));
 }
 
+let _askClaudeEventId = null;
+
+function askClaude() {
+  const e = EVENTS.find(x => x.id === _askClaudeEventId);
+  if (!e) return;
+  const d = new Date(e.date + 'T00:00:00');
+  const dStr = d.toLocaleDateString('en-AU', { day:'numeric', month:'long', year:'numeric' });
+  let msg;
+  if (activeAE && AE_ACCOUNTS[activeAE]) {
+    const accts = AE_ACCOUNTS[activeAE].slice(0, 20).join(', ');
+    msg = `Hey Claude, I need your help. Can you check the registration report for "${e.title}" (${dStr}) and tell me which of ${activeAE}'s accounts have registered? Here is the report link: ${e.report}\n\n${activeAE}'s accounts include: ${accts}`;
+  } else {
+    msg = `Hey Claude, can you check who has registered for "${e.title}" on ${dStr}? Here is the registration report: ${e.report}`;
+  }
+  navigator.clipboard.writeText(msg).catch(() => {});
+  const toast = document.getElementById('ask-claude-toast');
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2800);
+  setTimeout(() => window.open('https://salesforce.enterprise.slack.com/team/U0AAYBWECFQ', '_blank'), 400);
+}
+
 function renderRegPanel(id) {
   const e = EVENTS.find(x => x.id === id);
   if (!e) return;
@@ -1313,8 +1356,14 @@ function renderRegPanel(id) {
   const contentEl = document.getElementById('reg-content');
   const reportEl = document.getElementById('reg-report-link');
 
-  if (e.report) { reportEl.href = e.report; reportEl.style.display = 'block'; }
-  else { reportEl.style.display = 'none'; }
+  const askBtn = document.getElementById('ask-claude-btn');
+  if (e.report) {
+    reportEl.href = e.report; reportEl.style.display = 'block';
+    _askClaudeEventId = id; askBtn.style.display = 'flex';
+  } else {
+    reportEl.style.display = 'none';
+    askBtn.style.display = 'none';
+  }
 
   if (!ae) {
     titleEl.textContent = 'Registrations from your Accounts';
