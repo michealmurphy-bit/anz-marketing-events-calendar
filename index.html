@@ -591,15 +591,11 @@
       <div class="modal-desc" id="m-desc"></div>
       <div class="modal-actions" id="m-actions"></div>
     <div class="reg-panel" id="reg-panel">
-      <div class="reg-panel-hd">
-        <span class="reg-panel-title" id="reg-panel-title">Registrations from your Accounts</span>
-        <span class="reg-count" id="reg-count">0</span>
-      </div>
       <div id="reg-content"></div>
       <a class="reg-report-link" id="reg-report-link" href="#" target="_blank" style="display:none">View full registration report &#x2197;</a>
       <button class="ask-claude-btn" id="ask-claude-btn" style="display:none" onclick="askClaude()">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v11A1.5 1.5 0 003.5 16H8l4 4 4-4h4.5A1.5 1.5 0 0022 14.5v-11A1.5 1.5 0 0020.5 2z" fill="currentColor" opacity=".9"/></svg>
-        Ask Claude in Slack
+        <span>Check Registrations</span>
       </button>
       <div class="ask-claude-toast" id="ask-claude-toast">Message copied — opening Slack...</div>
     </div>
@@ -698,55 +694,7 @@ const AE_ACCOUNTS = {
 };
 
 // Mock registration data — in production populated from registration report links
-const REGISTRATIONS = {
-  3: [
-    { name: "Sarah Mitchell",   account: "EBOS Group",                       title: "Head of Digital",              date: "22 Jun" },
-    { name: "Chris Bennett",    account: "EBOS Group",                       title: "VP Operations",                date: "24 Jun" },
-    { name: "Jessica Park",     account: "Crown Resorts",                    title: "Director of CX",               date: "21 Jun" },
-    { name: "Andrew Park",      account: "Nine Entertainment Co. Pty Ltd.",  title: "Head of Customer Success",     date: "22 Jun" },
-    { name: "Peter Chen",       account: "Cochlear Limited",                 title: "Head of Service Delivery",     date: "17 Jun" },
-    { name: "Mei-Lin Zhang",    account: "Cochlear Headquarters",            title: "CX Director",                  date: "20 Jun" },
-    { name: "David Thompson",   account: "REA Group",                        title: "Senior Service Architect",     date: "20 Jun" },
-    { name: "Rachel Torres",    account: "TPG Telecom Limited",              title: "CX Lead",                      date: "21 Jun" },
-    { name: "Marcus Lee",       account: "Aristocrat Technologies Australia Pty Ltd", title: "Head of Digital",    date: "19 Jun" },
-    { name: "Lisa Kovacs",      account: "NBN Co Limited",                   title: "Service Operations Lead",      date: "18 Jun" }
-  ],
-  4: [
-    { name: "Emma Nguyen",      account: "MYOB Australia Pty Ltd (Parent Account)", title: "Digital Marketing Manager", date: "1 Jul" },
-    { name: "Priya Sharma",     account: "Domain Holdings Australia Pty Ltd",       title: "Marketing Director",        date: "3 Jul" },
-    { name: "Sarah Mitchell",   account: "EBOS Group",                              title: "Head of Digital",           date: "2 Jul" },
-    { name: "Tom Caldwell",     account: "Nine Entertainment Co. Pty Ltd.",          title: "CRM Manager",               date: "4 Jul" },
-    { name: "Marcus Lee",       account: "Tabcorp Holdings Limited",                title: "Head of Marketing",         date: "1 Jul" },
-    { name: "Jennifer Wong",    account: "Southern Cross Austereo Pty Ltd",         title: "Marketing Director",        date: "5 Jul" }
-  ],
-  5: [
-    { name: "Peter Chen",       account: "Cochlear Limited",                 title: "Data Architect",               date: "5 Jul"  },
-    { name: "Lisa Kovacs",      account: "Sonic Healthcare Limited",         title: "Data Platform Lead",           date: "7 Jul"  },
-    { name: "Sarah Mitchell",   account: "EBOS Group",                       title: "Head of Digital",              date: "8 Jul"  },
-    { name: "Mark Anderson",    account: "REA Group",                        title: "Head of Data",                 date: "6 Jul"  },
-    { name: "Jessica Park",     account: "Vocus Pty Ltd",                    title: "Data Governance Lead",         date: "7 Jul"  },
-    { name: "Mei-Lin Zhang",    account: "Carsales.com Ltd",                 title: "Head of Analytics",            date: "9 Jul"  }
-  ],
-  14: [
-    { name: "Robert Kumar",     account: "Cochlear Limited",                 title: "Chief Technology Officer",     date: "10 Jul" },
-    { name: "Fiona Walsh",      account: "ResMed Asia Pacific Limited",      title: "Chief Digital Officer",        date: "12 Jul" },
-    { name: "Chris Bennett",    account: "EBOS Group",                       title: "VP Finance",                   date: "11 Jul" },
-    { name: "Mark Stevens",     account: "Sonic Healthcare Limited",         title: "Head of Technology",           date: "9 Jul"  },
-    { name: "Amanda Foster",    account: "Nine Entertainment Co. Pty Ltd.",  title: "Group CIO",                    date: "14 Jul" },
-    { name: "Patrick O'Brien",  account: "NBN Co Limited",                   title: "Innovation Manager",           date: "13 Jul" }
-  ],
-  17: [
-    { name: "James Whitfield",  account: "CyberCX Pty Ltd",                 title: "Head of Security Practice",    date: "4 Jul"  },
-    { name: "Natalie Burns",    account: "Accenture Australia Pty Limited",  title: "Managing Director, Security",  date: "6 Jul"  },
-    { name: "Patrick O'Brien",  account: "NBN Co Limited",                   title: "Chief Security Officer",       date: "7 Jul"  },
-    { name: "Sarah Mitchell",   account: "EBOS Group",                       title: "Head of Risk & Compliance",    date: "5 Jul"  },
-    { name: "David Thompson",   account: "REA Group",                        title: "Group CISO",                   date: "8 Jul"  },
-    { name: "Rachel Torres",    account: "Cochlear Limited",                 title: "Information Security Lead",    date: "9 Jul"  },
-    { name: "Emma Nguyen",      account: "Crown Resorts",                    title: "VP Technology & Security",     date: "10 Jul" },
-    { name: "Michael Tam",      account: "TPG Telecom Limited",              title: "CISO",                         date: "5 Jul"  },
-    { name: "Angela Reid",      account: "Aristocrat Technologies Australia Pty Ltd", title: "Head of GRC",        date: "7 Jul"  }
-  ]
-};
+
 
 const EVENTS = [
   {
@@ -1346,47 +1294,24 @@ function askClaude() {
 function renderRegPanel(id) {
   const e = EVENTS.find(x => x.id === id);
   if (!e) return;
-  const regs = REGISTRATIONS[id] || [];
-  const ae = activeAE;
-  const accounts = ae ? AE_ACCOUNTS[ae] : null;
-  const filtered = accounts ? regs.filter(r => accounts.includes(r.account)) : regs;
 
-  const titleEl = document.getElementById('reg-panel-title');
-  const countEl = document.getElementById('reg-count');
-  const contentEl = document.getElementById('reg-content');
   const reportEl = document.getElementById('reg-report-link');
+  const askBtn   = document.getElementById('ask-claude-btn');
+  const contentEl = document.getElementById('reg-content');
 
-  const askBtn = document.getElementById('ask-claude-btn');
+  _askClaudeEventId = id;
+
   if (e.report) {
     reportEl.href = e.report; reportEl.style.display = 'block';
-    _askClaudeEventId = id; askBtn.style.display = 'flex';
+    askBtn.style.display = 'flex';
+    const label = activeAE ? "See " + activeAE.split(' ')[0] + "'s Registrations" : "Check Registrations";
+    askBtn.querySelector('span').textContent = label;
   } else {
     reportEl.style.display = 'none';
     askBtn.style.display = 'none';
   }
 
-  if (!ae) {
-    titleEl.textContent = 'Registrations from your Accounts';
-    countEl.textContent = regs.length;
-    countEl.style.background = 'var(--blue)';
-    contentEl.innerHTML = regs.length
-      ? '<div class="reg-prompt"><strong>' + regs.length + ' total registrations.</strong><br>Select an AE above to filter by their accounts.</div>'
-      : '<div class="reg-prompt">Select an AE above to filter registrations by account.</div>';
-    return;
-  }
-
-  titleEl.textContent = "From " + ae.split(' ')[0] + "'s Accounts";
-  countEl.textContent = filtered.length;
-  countEl.style.background = filtered.length > 0 ? '#2E844A' : '#B11B1B';
-
-  if (!filtered.length) {
-    contentEl.innerHTML = '<div class="reg-empty">No registrations yet from ' + ae + "'s accounts.<br><small style='color:var(--sub)'>" + (AE_ACCOUNTS[ae] || []).join(', ') + '</small></div>';
-    return;
-  }
-
-  contentEl.innerHTML = '<table class="reg-table"><thead><tr><th>Name</th><th>Account</th><th>Title</th><th>Date</th></tr></thead><tbody>' +
-    filtered.map(r => '<tr><td class="reg-name">' + r.name + '</td><td class="reg-acct">' + r.account + '</td><td>' + r.title + '</td><td style="white-space:nowrap;color:var(--sub)">' + r.date + '</td></tr>').join('') +
-    '</tbody></table>';
+  contentEl.innerHTML = '';
 }
 
 function openModal(id) {
