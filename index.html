@@ -1203,26 +1203,35 @@ function renderSpotCard(e) {
 }
 
 function renderSpotlight() {
-  const grid = document.getElementById('spot-grid');
-  const label = document.getElementById('spotlight-label');
-  const tip = document.getElementById('spotlight-tip');
-  const today = new Date(); today.setHours(0,0,0,0);
-  const sevenDaysAgo = new Date(today.getTime() - 7*24*60*60*1000);
+  const grid    = document.getElementById('spot-grid');
+  const label   = document.getElementById('spotlight-label');
+  const section = document.getElementById('spotlight-section');
+  const today   = new Date(); today.setHours(0,0,0,0);
+  const cutoff  = new Date(today.getTime() - 7*24*60*60*1000);
+
   const evs = EVENTS
-    .filter(e => {
-      if (filter && e.cloud !== filter && !(e.clouds && e.clouds.includes(filter))) return false;
-      if (entOnly && !e.entOnly) return false;
-      if (!e.firstSeen) return false;
-      return new Date(e.firstSeen) >= sevenDaysAgo;
-    })
+    .filter(e => e.firstSeen && new Date(e.firstSeen + 'T00:00:00') >= cutoff)
     .sort((a, b) => b.firstSeen.localeCompare(a.firstSeen));
+
+  if (!evs.length) { if (section) section.style.display = 'none'; return; }
+  if (section) section.style.display = '';
+
   const badge = '<span class="new-badge">New this week</span>';
-  const countStr = evs.length ? evs.length + ' Event' + (evs.length !== 1 ? 's' : '') : '';
-  label.innerHTML = 'Recently Added &nbsp;' + badge + (countStr ? ' &nbsp;<span style="font-size:.82rem;color:var(--sub);font-weight:500">— ' + countStr + '</span>' : '');
-  tip.style.display = evs.length ? 'none' : '';
-  grid.innerHTML = evs.length
-    ? evs.map(e => renderSpotCard(e)).join('')
-    : '<p style="color:var(--sub);font-size:.82rem;font-style:italic">No events added in the last 7 days.</p>';
+  label.innerHTML = 'Recently Added &nbsp;' + badge + ' &nbsp;<span style="font-size:.82rem;color:var(--sub);font-weight:500">— ' + evs.length + ' Event' + (evs.length !== 1 ? 's' : '') + '</span>';
+
+  grid.innerHTML = evs.map(function(e) {
+    var bs      = BADGE_STYLE[e.cloud] || { bg:'#EEF5FE', color:'#032D60' };
+    var d       = new Date(e.date + 'T00:00:00');
+    var dateStr = d.toLocaleDateString('en-AU', { day:'numeric', month:'short', year:'numeric' });
+    var diff    = Math.round((today - new Date(e.firstSeen + 'T00:00:00')) / 86400000);
+    var addedStr = diff === 0 ? 'Added today' : diff === 1 ? 'Added yesterday' : 'Added ' + diff + ' days ago';
+    return '<div class="spot-row" onclick="openModal(' + e.id + ')">' +
+      '<span class="spot-pill" style="background:' + bs.bg + ';color:' + bs.color + '">' + e.label + '</span>' +
+      '<span class="spot-title">' + e.title + '</span>' +
+      '<span class="spot-meta">' + dateStr + ' &nbsp;&middot;&nbsp; ' + e.tag + '</span>' +
+      '<span class="spot-added">' + addedStr + '</span>' +
+    '</div>';
+  }).join('');
 }
 
 function setFilter(cloud) {
