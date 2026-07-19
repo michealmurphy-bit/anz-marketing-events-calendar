@@ -291,6 +291,8 @@
     .m-primary:hover { background: var(--blue-d); }
     .m-secondary { background: #fff; color: var(--blue); border: 1.5px solid var(--blue); }
     .m-secondary:hover { background: #EEF5FE; }
+    .m-basho { background: #fff; color: #4B4EDC; border: 1.5px solid #4B4EDC; }
+    .m-basho:hover { background: #F0EFFF; }
 
     /* ── FOOTER STATUS ─────────────────────────────────────── */
     .status-bar {
@@ -945,7 +947,8 @@ const EVENTS = [
     clouds: ["agentforce", "analytics", "platform"],
     firstSeen: "2026-07-15",
     isNew: true,
-    entOnly: true
+    entOnly: true,
+    basho: "https://salesforce.enterprise.slack.com/docs/T01G0063H29/F0BC460MXB4"
   },
   {
     id: 15,
@@ -965,7 +968,8 @@ const EVENTS = [
     clouds: ["service", "agentforce"],
     firstSeen: "2026-07-10",
     isNew: true,
-    entOnly: true
+    entOnly: true,
+    basho: "https://salesforce.enterprise.slack.com/docs/T01G0063H29/F0BFYTDFHH9"
   },
   {
     id: 16,
@@ -985,7 +989,8 @@ const EVENTS = [
     clouds: ["data", "agentforce", "analytics"],
     firstSeen: "2026-07-16",
     isNew: true,
-    entOnly: true
+    entOnly: true,
+    basho: "https://salesforce.enterprise.slack.com/prompts/Pro0BGD94RSEB"
   },
   {
     id: 17,
@@ -1005,7 +1010,8 @@ const EVENTS = [
     clouds: ["security", "agentforce", "platform"],
     firstSeen: "2026-07-09",
     isNew: true,
-    entOnly: true
+    entOnly: true,
+    basho: "https://salesforce.enterprise.slack.com/docs/T7KUQ9FLZ/F0BFXKR2XFW"
   },
   {
     id: 18,
@@ -1045,7 +1051,8 @@ const EVENTS = [
     clouds: ["sales", "agentforce"],
     firstSeen: "2026-07-15",
     isNew: true,
-    entOnly: true
+    entOnly: true,
+    basho: "https://salesforce.enterprise.slack.com/prompts/Pro0BFU9ZH3TL"
   },
   {
     id: 20,
@@ -1084,7 +1091,8 @@ const EVENTS = [
     clouds: ["agentforce", "analytics"],
     firstSeen: "2026-07-15",
     isNew: true,
-    entOnly: true
+    entOnly: true,
+    basho: "https://salesforce.enterprise.slack.com/prompts/Pro0BFM82QCHF"
   }
 ];
 
@@ -1371,6 +1379,7 @@ function openModal(id) {
   let acts = '';
   if (e.reg)    acts += `<a href="${e.reg}"    target="_blank" class="m-btn m-primary">Register Now →</a>`;
   if (e.report) acts += `<a href="${e.report}" target="_blank" class="m-btn m-secondary">📊 Registration Report</a>`;
+  if (e.basho)  acts += `<a href="${e.basho}"  target="_blank" class="m-btn m-basho">✉️ Invite Template</a>`;
   document.getElementById('m-actions').innerHTML = acts;
 
   document.getElementById('overlay').dataset.eventId = id;
